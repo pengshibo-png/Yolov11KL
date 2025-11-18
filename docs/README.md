@@ -12,5 +12,5 @@ The C3k2_KW module is an enhanced version of the classical C3k2 (Cross Stage Par
 
 ### C3k2_KW Module
 Detect_LSCD achieves systematic optimization from three perspectives: (1) It adopts a grouped shared convolutional architecture, which applies uniform convolutional weights across multiple detection layers, thereby substantially reducing the number of parameters; (2) A lightweight Conv_GN module (Group Normalization convolution) replaces standard convolutions, further lowering computational cost and improving training stability; (3) Learnable scaling layers are incorporated to dynamically calibrate feature responses across hierarchical levels, mitigating feature conflicts caused by weight sharing and ensuring consistent multi-scale detection performance. The im-plementation process of the Detect_LSCD module is detailed in Algorithm 3, which outlines its pseudocode.
-<img width="814" height="469" alt="image" src="https://github.com/user-attachments/assets/14c61733-4137-4e6f-94be-060c4d247354" />
+<img width="814" height="469" alt="image" src="https://github.com/user-attachments/assets/14c61733-4137-4e6f-94be-060c4d247354" /> Figure 4
 
