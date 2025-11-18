@@ -1,9 +1,16 @@
-# Heading level 1 YOLOv11n-KL: A Lightweight Tomato Pests and Diseases De-tection Model for Edge Devices
-### Heading level 3 Introduction
+#  YOLOv11n-KL: A Lightweight Tomato Pests and Diseases De-tection Model for Edge Devices
+### Introduction
  YOLOv11n-KL incorporates three major innovations: (1) the Conv_KW module, which utilizes a cross-layer shared KernelWarehouse (KW). combined with an attention mechanism to dynamically generate convolutional weights for small targets, thereby enhancing feature extraction while reducing computational complexity; (2) the C3k2_KW module, which extends the dynamic kernel concept to multi-branch feature fusion, efficiently reuses kernels to reduce computational complexity while maintain-ing sufficient receptive field coverage; (3) the Detect_LSCD head, a lightweight shared-convolution detection (LSCD) module featuring adaptive multi-scale calibra-tion, which reduces redundancy while ensuring accurate detection of both small and large disease regions. Collectively, these designs enable YOLOv11n-KL to achieve an optimal balance among accuracy, efficiency, and generalization, offering a practical solution for real-time edge deployment in intelligent agricultural.
-<img width="816" height="898" alt="image" src="https://github.com/user-attachments/assets/9702c2c2-38a6-4284-a38e-a4d1f83aede5" />
- ### Heading Tutorials
+<img width="816" height="898" alt="image" src="https://github.com/user-attachments/assets/9702c2c2-38a6-4284-a38e-a4d1f83aede5" />Figure 1
 
+### Conv_KW Module
+Conv_KW is a convolutional module built upon a dynamic KernelWarehouse (KW) mechanism. It adopts an attention-driven dynamic weight generation strategy that substantially reduces computational complexity while improving both feature representation and adaptability to varying inputs. The core concept reconstructs static convolutional weights into a set of dynamically combinable Kernel Cells, enabling adaptive generation of convolutional weights according to input features through a cross-layer shared Warehouse mechanism. The structural design of Conv_KW is illus-trated in Figure 2.
+ <img width="822" height="485" alt="image" src="https://github.com/user-attachments/assets/3052a3a1-6e5a-47c5-ade2-5c80fb8112b1" /> Figure 2
+### C3k2_KW Module
+The C3k2_KW module is an enhanced version of the classical C3k2 (Cross Stage Partial with kernel size 2) architecture that efficiently extracts features (Figure 3). This module substantially enhances feature representation and parameter efficiency while preserving the benefits of multi-branch feature fusion. Its key innovation lies in incor-porating a KernelWarehouse mechanism, which stores a compact set of base kernels that can be dynamically assembled within a single convolutional operation. By dy-namically combining these kernels with input-dependent weights, C3k2_KW enables richer multi-scale receptive fields without increasing the parameter count. This ap-proach substantially reduces memory usage and computational load while maintain-ing detection accuracy. 
+<img width="824" height="451" alt="image" src="https://github.com/user-attachments/assets/12c12299-f89d-43a8-b83c-846e51b69a24" /> Figure 3
 
+### C3k2_KW Module
+Detect_LSCD achieves systematic optimization from three perspectives: (1) It adopts a grouped shared convolutional architecture, which applies uniform convolutional weights across multiple detection layers, thereby substantially reducing the number of parameters; (2) A lightweight Conv_GN module (Group Normalization convolution) replaces standard convolutions, further lowering computational cost and improving training stability; (3) Learnable scaling layers are incorporated to dynamically calibrate feature responses across hierarchical levels, mitigating feature conflicts caused by weight sharing and ensuring consistent multi-scale detection performance. The im-plementation process of the Detect_LSCD module is detailed in Algorithm 3, which outlines its pseudocode.
+<img width="814" height="469" alt="image" src="https://github.com/user-attachments/assets/14c61733-4137-4e6f-94be-060c4d247354" />
 
- 
